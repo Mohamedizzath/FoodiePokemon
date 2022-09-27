@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
 import 'bootswatch/dist/journal/bootstrap.css';
 import {BrowserRouter as Router, Link, Route, Routes} from "react-router-dom";
 import FoodItems from "./components/foodItems/FoodItems";
