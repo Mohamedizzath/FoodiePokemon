@@ -45,8 +45,8 @@ function App() {
              <Route path='/orders' element={<Orders />} />
              <Route path='/payments' element={<Payments />} />
            </Routes>
-           <div className="container-fluid fixed-bottom py-2 text-center bg-dark">
-             <a href="https://github.com/Mohamedizzath/FoodiePokemon" className="text-secondary text-decoration-none">Github repository</a>
+           <div className="container-fluid py-2 mt-0 text-center bg-dark">
+             <a href="https://github.com/Mohamedizzath/FoodiePokemon" className="text-decoration-none" style={{ color: "#FFFFFF"}}>Github repository</a>
            </div>
          </Router>
   );
