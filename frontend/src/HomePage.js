@@ -5,6 +5,7 @@ import FoodItems from "./testdata/FoodItems";
 import Drinks from "./testdata/Drinks";
 import FoodCard from "./components/foodItems/FoodCard";
 import DrinkCard from "./components/drinks/DrinkCard";
+import {Link} from "react-router-dom";
 
 function HomePage(){
     return <div className="container-fluid p-0">
@@ -20,13 +21,13 @@ function HomePage(){
             </div>
         </div>
         <div id="food-items" className="container-fluid pt-4">
-            <h1 className="text-center">Amazing foods ...</h1>
+            <h1 className="text-center">Amazing foods ...&nbsp;&nbsp;&nbsp;<Link to="/fooditems" className="btn btn-outline-danger">More...</Link></h1>
             <div className="container-fluid mt-4 d-flex overflow-hidden">
                 { FoodItems.map(foodItem => <FoodCard foodItem={foodItem} />)}
             </div>
         </div>
         <div id="drinks" className="container-fluid pt-4">
-            <h1 className="text-center">Refreshing beverages ...</h1>
+            <h1 className="text-center">Refreshing beverages ...&nbsp;&nbsp;&nbsp;<Link to="/drinks" className="btn btn-outline-danger">More...</Link></h1>
             <div className="container-fluid mt-4 d-flex overflow-hidden">
                 { Drinks.map(drink => <DrinkCard drink={drink} />)}
             </div>
