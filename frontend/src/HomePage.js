@@ -22,6 +22,7 @@ function HomePage(){
         </div>
         <div id="food-items" className="container-fluid pt-4">
             <h1 className="text-center">Amazing foods ...&nbsp;&nbsp;&nbsp;<Link to="/fooditems" className="btn btn-outline-danger">More...</Link></h1>
+
             <div className="container-fluid mt-4 d-flex overflow-hidden">
                 { FoodItems.map(foodItem => <FoodCard foodItem={foodItem} />)}
             </div>
