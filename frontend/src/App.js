@@ -7,6 +7,7 @@ import Payments from "./components/payments/Payments";
 import HomePage from "./HomePage";
 import LoginPage from "./pages/LoginPage";
 import {useState} from "react";
+import FoodItemsPage from "./pages/FoodItemsPage";
 
 function App() {
     // Managing user details
@@ -53,7 +54,7 @@ function App() {
             </nav>
             <Routes>
                 <Route path='/' element={<HomePage/>}/>
-                <Route path='/fooditems' element={<FoodItems/>}/>
+                <Route path='/fooditems' element={<FoodItemsPage user={user}/>}/>
                 <Route path='/drinks' element={<Drinks/>}/>
                 <Route path='/orders' element={<Orders/>}/>
                 <Route path='/payments' element={<Payments/>}/>
