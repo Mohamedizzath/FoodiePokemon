@@ -1,8 +1,8 @@
 import 'bootswatch/dist/journal/bootstrap.css';
 import {BrowserRouter as Router, Link, Route, Routes, useNavigate} from "react-router-dom";
-import FoodItems from "./components/foodItems/FoodItems";
+//import FoodItems from "./components/foodItems/FoodItems";
 import Drinks from "./components/drinks/Drinks";
-import Orders from "./components/orders/Orders";
+import OrderPage from "./pages/OrderPage";
 import Payments from "./components/payments/Payments";
 import HomePage from "./HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -56,7 +56,7 @@ function App() {
                 <Route path='/' element={<HomePage/>}/>
                 <Route path='/fooditems' element={<FoodItemsPage user={user}/>}/>
                 <Route path='/drinks' element={<Drinks/>}/>
-                <Route path='/orders' element={<Orders/>}/>
+                <Route path='/orders' element={<OrderPage user={user}/>}/>
                 <Route path='/payments' element={<Payments/>}/>
                 <Route path='/login' element={<LoginPage setUser={setUser}/>}/>
             </Routes>
