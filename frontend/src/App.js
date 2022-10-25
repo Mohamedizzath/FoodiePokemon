@@ -1,6 +1,5 @@
 import 'bootswatch/dist/journal/bootstrap.css';
 import {BrowserRouter as Router, Link, Route, Routes, useNavigate} from "react-router-dom";
-// import FoodItems from "./components/foodItems/FoodItems";
 import Drinks from "./components/drinks/Drinks";
 import Orders from "./components/orders/Orders";
 import Payments from "./components/payments/Payments";
