@@ -1,9 +1,10 @@
 import 'bootswatch/dist/journal/bootstrap.css';
 import {BrowserRouter as Router, Link, Route, Routes, useNavigate} from "react-router-dom";
-import FoodItems from "./components/foodItems/FoodItems";
+// import FoodItems from "./components/foodItems/FoodItems";
 import Drinks from "./components/drinks/Drinks";
 import Orders from "./components/orders/Orders";
 import Payments from "./components/payments/Payments";
+import Feedback from "./pages/Feedback";
 import HomePage from "./HomePage";
 import LoginPage from "./pages/LoginPage";
 import {useState} from "react";
@@ -42,6 +43,9 @@ function App() {
                             <li className="nav-item">
                                 <Link to="/payments" className="nav-link">Payments</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link to="/feedback" className="nav-link">Feedback</Link>
+                            </li>
                         </ul>
                         <div className="d-flex">
                             {user && <Link to="/login" className="btn btn-danger my-2 my-sm-0"
@@ -59,6 +63,8 @@ function App() {
                 <Route path='/orders' element={<Orders/>}/>
                 <Route path='/payments' element={<Payments/>}/>
                 <Route path='/login' element={<LoginPage setUser={setUser}/>}/>
+                <Route path='/feedback' element={<Feedback/>}/>
+
             </Routes>
             <div className="container-fluid py-2 mt-0 text-center bg-dark">
                 <a href="https://github.com/Mohamedizzath/FoodiePokemon" className="text-decoration-none"
