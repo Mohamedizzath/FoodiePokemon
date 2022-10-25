@@ -1,6 +1,5 @@
 import 'bootswatch/dist/journal/bootstrap.css';
 import {BrowserRouter as Router, Link, Route, Routes, useNavigate} from "react-router-dom";
-import FoodItems from "./components/foodItems/FoodItems";
 import Drinks from "./components/drinks/Drinks";
 import Orders from "./components/orders/Orders";
 import Payments from "./components/payments/Payments";
@@ -8,6 +7,7 @@ import HomePage from "./HomePage";
 import LoginPage from "./pages/LoginPage";
 import {useState} from "react";
 import FoodItemsPage from "./pages/FoodItemsPage";
+import DessertPage from "./pages/DessertPage";
 
 function App() {
     // Managing user details
@@ -37,6 +37,9 @@ function App() {
                                 <Link to="/drinks" className="nav-link">Drinks</Link>
                             </li>
                             <li className="nav-item">
+                                <Link to="/dessert" className="nav-link">Dessert</Link>
+                            </li>
+                            <li className="nav-item">
                                 <Link to="/orders" className="nav-link">Orders</Link>
                             </li>
                             <li className="nav-item">
@@ -56,6 +59,7 @@ function App() {
                 <Route path='/' element={<HomePage/>}/>
                 <Route path='/fooditems' element={<FoodItemsPage user={user}/>}/>
                 <Route path='/drinks' element={<Drinks/>}/>
+                <Route path='/dessert' element={<DessertPage user={user}/>} />
                 <Route path='/orders' element={<Orders/>}/>
                 <Route path='/payments' element={<Payments/>}/>
                 <Route path='/login' element={<LoginPage setUser={setUser}/>}/>
