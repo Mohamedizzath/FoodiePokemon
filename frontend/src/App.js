@@ -8,6 +8,7 @@ import HomePage from "./HomePage";
 import LoginPage from "./pages/LoginPage";
 import {useState} from "react";
 import FoodItemsPage from "./pages/FoodItemsPage";
+import DessertPage from "./pages/DessertPage";
 
 function App() {
     // Managing user details
@@ -37,6 +38,9 @@ function App() {
                                 <Link to="/drinks" className="nav-link">Drinks</Link>
                             </li>
                             <li className="nav-item">
+                                <Link to="/dessert" className="nav-link">Dessert</Link>
+                            </li>
+                            <li className="nav-item">
                                 <Link to="/orders" className="nav-link">Orders</Link>
                             </li>
                             <li className="nav-item">
@@ -59,6 +63,7 @@ function App() {
                 <Route path='/' element={<HomePage/>}/>
                 <Route path='/fooditems' element={<FoodItemsPage user={user}/>}/>
                 <Route path='/drinks' element={<Drinks/>}/>
+                <Route path='/dessert' element={<DessertPage user={user}/>} />
                 <Route path='/orders' element={<OrderPage user={user}/>}/>
                 <Route path='/payments' element={<Payments/>}/>
                 <Route path='/login' element={<LoginPage setUser={setUser}/>}/>
