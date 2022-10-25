@@ -1,13 +1,25 @@
 import 'bootswatch/dist/journal/bootstrap.css';
 import HomeImage from './images/home-page.jpg';
 import FooterImage from './images/home-page-footer.jpg';
-import FoodItems from "./testdata/FoodItems";
 import Drinks from "./testdata/Drinks";
 import FoodCard from "./components/foodItems/FoodCard";
 import DrinkCard from "./components/drinks/DrinkCard";
 import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 function HomePage(){
+    // Getting initial fooditems, drinks, and desserts
+    const [foodItems, setFoodItems] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/fooditems")
+            .then((response) => {
+                console.log(response);
+                setFoodItems(response.data);
+            });
+    }, []);
+
     return <div className="container-fluid p-0">
         <div className="container-fluid vh-100 ps-4 d-flex flex-column justify-content-center align-items-start" style={{ backgroundImage: `url(${HomeImage})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover", color: "#FFFFFF"}}>
             <h1>Live, love, eat.</h1>
@@ -24,7 +36,7 @@ function HomePage(){
             <h1 className="text-center">Amazing foods ...&nbsp;&nbsp;&nbsp;<Link to="/fooditems" className="btn btn-outline-danger">More...</Link></h1>
 
             <div className="container-fluid mt-4 d-flex overflow-hidden">
-                { FoodItems.map(foodItem => <FoodCard foodItem={foodItem} showDelete={false} showUpdate={false}/>)}
+                { foodItems.map(foodItem => <FoodCard foodItem={foodItem} showDelete={false} showUpdate={false}/>)}
             </div>
         </div>
         <div id="drinks" className="container-fluid pt-4">
