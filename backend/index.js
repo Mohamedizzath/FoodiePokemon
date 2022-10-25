@@ -15,6 +15,7 @@ app.use(cors());
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 
+
 // Connecting to the mongodb
 const connectionString = process.env.CONNECTION_STRING;
 const startConnection = require('./mongo-config');
