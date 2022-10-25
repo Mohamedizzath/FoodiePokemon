@@ -14,9 +14,9 @@ router.get('/',async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/',async (req, res) => {
     // Creating new fooditem document
-    console.log(req.body);
+    console.log(req);
     const fooditem = new FoodItems({
         Name: req.body.name,
         Category: req.body.category,

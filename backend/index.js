@@ -8,9 +8,13 @@ const FoodItemsRoutes = require('./routes/foodItems');
 const dotenv = require('dotenv');
 dotenv.config();
 
+// Enable CORS in the server
+const cors = require('cors');
+app.use(cors());
+
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: true }));
+
 
 // Connecting to the mongodb
 const connectionString = process.env.CONNECTION_STRING;
