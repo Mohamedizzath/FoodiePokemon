@@ -21,3 +21,6 @@ Web application for food restaurant which built using MERN stack
 
 ## Screenshots 📸 
 
+![Home Page](https://github.com/Mohamedizzath/FoodiePokemon/blob/main/images/screenshot-01.png)
+![Food items in home page](https://github.com/Mohamedizzath/FoodiePokemon/blob/main/images/screenshot-02.png)
+![Login page](https://github.com/Mohamedizzath/FoodiePokemon/blob/main/images/screenshot-03.png)
