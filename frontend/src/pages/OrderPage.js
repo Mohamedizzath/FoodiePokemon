@@ -14,7 +14,7 @@ function OrderPage({user, cart, setCart}) {
             backgroundSize: "cover",
             color: "#FFFFFF"
         }}>
-            <h1 className="text-right text-white pe-5">Orders</h1>
+            <h1 className="text-right text-white pe-5">Oders</h1>
         </div>
         <div id="food-items" className="container-fluid pt-4">
             <h1 className="text-center">{cart.foodItems.length > 0 ? "Ordered food items ..." : "You didn't ordered any food items"}&nbsp;&nbsp;&nbsp;</h1>
