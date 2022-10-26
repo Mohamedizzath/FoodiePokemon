@@ -1,9 +1,9 @@
 import LoginImage from "../images/login-page.jpg";
 import {useState} from "react";
-import userRoles from "../testdata/UserRoles";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
-function LoginPage({ setUser }){
+function LoginPage({ setUser, cart, setCart }){
     // Handling the state
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -14,22 +14,40 @@ function LoginPage({ setUser }){
     const navigator = useNavigate();
 
     const submitForm = (username, password) => {
-        const userNames = userRoles.map(user => user.username.toLowerCase());
-        if(userNames.includes(username.toLowerCase())){
-            // Getting that particular user
-            const user = userRoles.find(user => user.username.toLowerCase() === username.toLowerCase());
+        const user = {
+            username: username,
+            password: password
+        };
 
-            if(user.password === password){
-                setUser({ username: username, password: password });
-                navigator('/');
-            } else {
-                setErrorText('Username and password invalid');
-                setShowError(true);
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
             }
-        } else {
-            setErrorText('Username and password invalid');
-            setShowError(true);
         }
+
+        axios.post("http://localhost:8080/auth/login", JSON.stringify(user), config)
+            .then((response) => {
+                if(response.status === 200) {
+                    setUser({
+                        userId: response.data._id,
+                        username: response.data.Username,
+                        password: response.data.Password
+                    });
+                    setCart({...cart, user: {
+                            userId: response.data._id,
+                            username: response.data.Username,
+                            password: response.data.Password
+                        }});
+                    navigator('/');
+                } else {
+                    setErrorText(response.data.message);
+                    setShowError(true);
+                }
+            })
+            .catch((error) => {
+                setErrorText('Login failed. Please check username and password');
+                setShowError(true);
+            })
     }
 
     return <div className="container-fluid p-0 vh-100 d-flex">
