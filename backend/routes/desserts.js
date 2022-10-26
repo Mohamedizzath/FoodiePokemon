@@ -38,7 +38,7 @@ router.patch('/:id', async (req, res) => {
         const Dessert = req.body;
         const options = { new: true };
 
-        const results = await Desserts.findByIdAndUpdate(id, Drink, options);
+        const results = await Desserts.findByIdAndUpdate(id, Dessert, options);
         res.send(results);
     } catch(error) {
         res.status(400).json({ message: error.message });
