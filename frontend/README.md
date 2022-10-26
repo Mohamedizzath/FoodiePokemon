@@ -1,13 +1,13 @@
 # FoodiePokemon Frontend 🎃
 
-This is the folder which contains react project which is the frontend of the foodiepokemon application
+This is the folder which contains react project which is the frontend of the FoodiePokemon application
 
 ---
 
 ## How to run the frontend
 1. Clone the main repository
 ```bash
-git colne <repository-link>
+git clone <repository-link>
 ```
 
 2. Navigate to the frontend folder which contains the frontend of the application
