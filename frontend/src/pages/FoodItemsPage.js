@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import FoodCreateImage from "../images/create-food.jpg";
 import axios from "axios";
 
-function FoodItemsPage({user}) {
+function FoodItemsPage({user, cart, setCart}) {
     // Managing food items
     const [currentFoodItems, setCurrentFoodItems] = useState([]);
 
@@ -44,10 +44,10 @@ function FoodItemsPage({user}) {
 
         axios.post("http://localhost:8080/fooditems", JSON.stringify(newFoodItem), config)
             .then((response) => {
-            console.log(response);
-            const newFoodItems = [foodItem, ...currentFoodItems];
-            setCurrentFoodItems(newFoodItems);
-        });
+                console.log(response);
+                const newFoodItems = [foodItem, ...currentFoodItems];
+                setCurrentFoodItems(newFoodItems);
+            });
     }
 
     const setFoodItemId = (foodItemId) => {
@@ -97,7 +97,7 @@ function FoodItemsPage({user}) {
             {currentFoodItems.map(foodItem => <FoodCard foodItem={foodItem} showDelete={user ? true : false}
                                                         showUpdate={user ? true : false}
                                                         deleteItem={removeFoodItem}
-            setFoodItemId={setFoodItemId}/>)}
+                                                        setFoodItemId={setFoodItemId} cart={cart} setCart={setCart}/>)}
         </div>
         {
             user && <div className="container-fluid d-flex" style={{height: 600}}>
