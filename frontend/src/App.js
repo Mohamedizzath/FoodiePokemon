@@ -1,18 +1,20 @@
 import 'bootswatch/dist/journal/bootstrap.css';
 import {BrowserRouter as Router, Link, Route, Routes, useNavigate} from "react-router-dom";
-import Drinks from "./components/drinks/Drinks";
 import OrderPage from "./pages/OrderPage";
-import Payments from "./components/payments/Payments";
 import Feedback from "./pages/Feedback";
 import HomePage from "./HomePage";
 import LoginPage from "./pages/LoginPage";
 import {useState} from "react";
 import FoodItemsPage from "./pages/FoodItemsPage";
 import DessertPage from "./pages/DessertPage";
+import DrinkPage from "./pages/DrinkPage";
 
 function App() {
     // Managing user details
     const [user, setUser] = useState(null);
+
+    // Managing orders currently have
+    const [cart, setCart] = useState({user: null, foodItems: [], drinks: [], desserts: []});
 
     // Logging out current user
     const logout = () => {
@@ -40,15 +42,16 @@ function App() {
                             <li className="nav-item">
                                 <Link to="/dessert" className="nav-link">Dessert</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to="/orders" className="nav-link">Orders</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="/payments" className="nav-link">Payments</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="/feedback" className="nav-link">Feedback</Link>
-                            </li>
+                            {
+                                user && <li className="nav-item">
+                                    <Link to="/orders" className="nav-link">Orders</Link>
+                                </li>
+                            }
+                            {
+                                user && <li className="nav-item">
+                                    <Link to="/feedback" className="nav-link">Feedback</Link>
+                                </li>
+                            }
                         </ul>
                         <div className="d-flex">
                             {user && <Link to="/login" className="btn btn-danger my-2 my-sm-0"
@@ -59,17 +62,17 @@ function App() {
                     </div>
                 </div>
             </nav>
-            <Routes>
-                <Route path='/' element={<HomePage/>}/>
-                <Route path='/fooditems' element={<FoodItemsPage user={user}/>}/>
-                <Route path='/drinks' element={<Drinks/>}/>
-                <Route path='/dessert' element={<DessertPage user={user}/>} />
-                <Route path='/orders' element={<OrderPage user={user}/>}/>
-                <Route path='/payments' element={<Payments/>}/>
-                <Route path='/login' element={<LoginPage setUser={setUser}/>}/>
-                <Route path='/feedback' element={<Feedback/>}/>
-
-            </Routes>
+            <div className="container-fluid min-vh-100 p-0 m-0">
+                <Routes>
+                    <Route path='/' element={<HomePage cart={cart} setCart={setCart}/>}/>
+                    <Route path='/fooditems' element={<FoodItemsPage user={user} cart={cart} setCart={setCart} />}/>
+                    <Route path='/drinks' element={<DrinkPage user={user} cart={cart} setCart={setCart} />}/>
+                    <Route path='/dessert' element={<DessertPage user={user} cart={cart} setCart={setCart} />} />
+                    <Route path='/orders' element={<OrderPage user={user} cart={cart} setCart={setCart} />}/>
+                    <Route path='/login' element={<LoginPage setUser={setUser} cart={cart} setCart={setCart} />}/>
+                    <Route path='/feedback' element={<Feedback user={user} cart={cart} setCart={setCart} />}/>
+                </Routes>
+            </div>
             <div className="container-fluid py-2 mt-0 text-center bg-dark">
                 <a href="https://github.com/Mohamedizzath/FoodiePokemon" className="text-decoration-none"
                    style={{color: "#FFFFFF"}}>Github repository</a>

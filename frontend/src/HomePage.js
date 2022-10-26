@@ -1,22 +1,34 @@
 import 'bootswatch/dist/journal/bootstrap.css';
 import HomeImage from './images/home-page.jpg';
 import FooterImage from './images/home-page-footer.jpg';
-import Drinks from "./testdata/Drinks";
 import FoodCard from "./components/foodItems/FoodCard";
 import DrinkCard from "./components/drinks/DrinkCard";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import DessertCard from "./components/desserts/DessertCard";
 
-function HomePage(){
+function HomePage({ cart, setCart }){
     // Getting initial fooditems, drinks, and desserts
     const [foodItems, setFoodItems] = useState([]);
+    const [drinks, setDrinks] = useState([]);
+    const [desserts, setDesserts] = useState([]);
 
     useEffect(() => {
         axios.get("http://localhost:8080/fooditems")
             .then((response) => {
                 console.log(response);
                 setFoodItems(response.data);
+            });
+        axios.get("http://localhost:8080/drinks")
+            .then((response) => {
+                console.log(response);
+                setDrinks(response.data);
+            });
+        axios.get("http://localhost:8080/desserts")
+            .then((response) => {
+                console.log(response);
+                setDesserts(response.data);
             });
     }, []);
 
@@ -36,13 +48,19 @@ function HomePage(){
             <h1 className="text-center">Amazing foods ...&nbsp;&nbsp;&nbsp;<Link to="/fooditems" className="btn btn-outline-danger">More...</Link></h1>
 
             <div className="container-fluid mt-4 d-flex overflow-hidden">
-                { foodItems.map(foodItem => <FoodCard foodItem={foodItem} showDelete={false} showUpdate={false}/>)}
+                { foodItems.map(foodItem => <FoodCard foodItem={foodItem} showDelete={false} showUpdate={false} cart={cart} setCart={setCart}/>)}
             </div>
         </div>
         <div id="drinks" className="container-fluid pt-4">
             <h1 className="text-center">Refreshing beverages ...&nbsp;&nbsp;&nbsp;<Link to="/drinks" className="btn btn-outline-danger">More...</Link></h1>
             <div className="container-fluid mt-4 d-flex overflow-hidden">
-                { Drinks.map(drink => <DrinkCard drink={drink} />)}
+                { drinks.map(drink => <DrinkCard drink={drink} cart={cart} setCart={setCart} />)}
+            </div>
+        </div>
+        <div id="desserts" className="container-fluid pt-4">
+            <h1 className="text-center">Delicious desserts ...&nbsp;&nbsp;&nbsp;<Link to="/drinks" className="btn btn-outline-danger">More...</Link></h1>
+            <div className="container-fluid mt-4 d-flex overflow-hidden">
+                { desserts.map(dessert => <DessertCard DessertItem={dessert} cart={cart} setCart={setCart} />)}
             </div>
         </div>
         <div className="container-fluid bg-dark p-0 d-flex">
