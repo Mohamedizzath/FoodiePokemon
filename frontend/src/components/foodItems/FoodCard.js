@@ -1,10 +1,10 @@
 import {FaTrash, FaPen} from "react-icons/fa";
 
-function FoodCard({foodItem, showUpdate, showDelete, deleteItem}) {
+function FoodCard({foodItem, showUpdate, showDelete, deleteItem, setFoodItemId}) {
     return <div className="card bg-light mb-3 mx-4" style={{minWidth: 250, maxWidth: 300}} id={foodItem._id}>
         <div className="card-header d-flex justify-content-between">
             <h3>{foodItem.Name}</h3>
-            {showUpdate && <button type="button" className="btn btn-outline-success px-2">
+            {showUpdate && <button type="button" className="btn btn-outline-success px-2" onClick={() => setFoodItemId(foodItem._id)}>
                 <FaPen/>
             </button>
             }
